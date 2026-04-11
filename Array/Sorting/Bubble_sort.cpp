@@ -7,6 +7,7 @@
                     swap(arr[j], arr[j + 1]);  //Swap arr[j+1] with arr[i]
                     didSwap = 1;
                 }
+            
             }
             if (didSwap == 0) {
                 break;
