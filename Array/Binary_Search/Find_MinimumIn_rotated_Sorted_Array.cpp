@@ -73,6 +73,13 @@ public:
         while (low <= high) {
             // Calculate middle index safely
             int mid = low + (high - low) / 2;
+           
+            // // If the current search space is already sorted,
+            // nums[low] is the minimum.
+           if (nums[low] <= nums[high]) {
+                ans = min(ans, nums[low]);
+                break;
+            }
 
             // If left half is sorted
             if (nums[low] <= nums[mid]) {
