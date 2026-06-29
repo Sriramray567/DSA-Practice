@@ -1,4 +1,4 @@
-# Binary Search (Easy)
+# Binary Search(Easy)
 
 # 1. Search X in Sorted Array
 
@@ -82,6 +82,11 @@ means the target can only exist on the left side.
 
 A sorted array allows us to eliminate half of the search space after every comparison.
 
+### 🔗 Problem Link
+https://www.geeksforgeeks.org/problems/search-in-a-sorted-array-1587115621/1
+
+## Problem Statement
+...
 ---
 
 # 2. Lower Bound
@@ -214,6 +219,11 @@ arr[mid] >= X
 
 `mid` is a possible answer, but there may be another valid answer on the left.
 
+### 🔗 Problem Link
+https://www.geeksforgeeks.org/problems/implement-lower-bound/1
+
+## Problem Statement
+...
 ---
 
 # 3. Upper Bound
@@ -351,6 +361,12 @@ while(low <= high){
     }
 }
 
+### 🔗 Problem Link
+https://www.geeksforgeeks.org/problems/implement-upper-bound/1
+
+## Problem Statement
+...
+
 # 4. Search Insert Position
 
 ## Problem Statement
@@ -428,6 +444,11 @@ No new algorithm is required.
 
 `O(1)`
 
+### 🔗 Problem Link
+https://leetcode.com/problems/search-insert-position/
+
+## Problem Statement
+...
 ---
 
 # 5. Floor and Ceil in Sorted Array
@@ -518,6 +539,12 @@ Ceil always searches towards the **left** after finding a valid answer.
 
 `O(1)`
 
+
+### 🔗 Problem Link
+https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1
+
+## Problem Statement
+...
 ---
 
 # 6. First and Last Occurrence
@@ -612,6 +639,11 @@ Last occurrence is obtained by modifying Binary Search to continue searching on 
 
 `O(1)`
 
+### 🔗 Problem Link
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
+
+## Problem Statement
+...
 ---
 
 # 7. Count Occurrences in a Sorted Array
@@ -704,6 +736,12 @@ First Occurrence = Lower Bound
 Last Occurrence = Modified Binary Search
 
 Count = Last Occurrence - First Occurrence + 1
+
+### 🔗 Problem Link
+https://www.geeksforgeeks.org/problems/number-of-occurrence2259/1
+
+## Problem Statement
+...
 ```
 
 # 8. Search in Rotated Sorted Array - I
@@ -780,6 +818,11 @@ This observation allows Binary Search to eliminate half of the search space.
 
 `O(1)`
 
+### 🔗 Problem Link
+https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+## Problem Statement
+...
 ---
 
 # 9. Search in Rotated Sorted Array - II
@@ -869,6 +912,12 @@ Worst Case → `O(n)`
 
 `O(1)`
 
+
+### 🔗 Problem Link
+https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+
+## Problem Statement
+...
 ---
 
 # 10. Find Minimum in Rotated Sorted Array
@@ -948,6 +997,11 @@ The minimum element is either
 
 `O(1)`
 
+### 🔗 Problem Link
+https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+
+## Problem Statement
+...
 ---
 
 # 11. Find Out How Many Times the Array is Rotated
@@ -1032,6 +1086,12 @@ Rotation Count = Index of Minimum Element
 | Find K Rotations        | Rotation count = Index of minimum  |
 
 These four problems are based on the **same Binary Search observation**. Once you understand how to identify the sorted half, all of them become much easier.
+
+### 🔗 Problem Link
+https://www.geeksforgeeks.org/problems/rotation4723/1
+
+## Problem Statement
+...
 
 
 # 12. Single Element in a Sorted Array
@@ -1140,6 +1200,12 @@ Binary Search uses this change to eliminate half of the search space.
 
 `O(1)`
 
+
+### 🔗 Problem Link
+https://leetcode.com/problems/single-element-in-a-sorted-array/
+
+## Problem Statement
+...
 ---
 
 # 13. Find Peak Element
@@ -1259,6 +1325,11 @@ A peak is guaranteed to exist.
 
 `O(1)`
 
+### 🔗 Problem Link
+https://leetcode.com/problems/find-peak-element/
+
+## Problem Statement
+...
 ---
 
 # Binary Search Patterns Learned
