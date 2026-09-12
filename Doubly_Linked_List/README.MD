@@ -489,6 +489,107 @@ Return Head
 
 > **Always remember:** When deleting a node from a DLL, carefully update both `prev` and `next` pointers.
 
+🔗 Doubly Linked List — Insert Before Head & Insert Before Tail
+
+This folder contains solutions for two important insertion operations in a Doubly Linked List (DLL):
+
+Insert a node before the current head
+
+Insert a node before the tail
+
+📌 1. Insert Before Head
+
+Problem
+
+Given the head of a Doubly Linked List and a value, insert a new node before the current head and return the new head.
+
+🔗 Problem Link
+
+GeeksforGeeks — Insert a Node at the Front of a Doubly Linked List
+
+Example
+
+Before:
+
+10 ⇄ 20 ⇄ 30
+
+Insert 5
+
+After:
+
+5 ⇄ 10 ⇄ 20 ⇄ 30
+
+Approach
+
+Create a new node.
+
+Connect the new node's next to the current head.
+
+If the list is not empty, update the old head's prev.
+
+Return the new node as the new head.
+
+Edge Cases
+
+Empty list: New node becomes the head.
+
+Non-empty list: New node is inserted before the current head.
+
+Complexity
+
+Time: O(1)
+
+Auxiliary Space: O(1)
+
+📌 2. Insert Before Tail
+
+Problem
+
+Given the head of a Doubly Linked List and a value k, insert a new node containing k immediately before the tail node.
+
+🔗 Problem Link
+
+Code360 — Insert Before Tail
+
+Example
+
+Before:
+
+4 ⇄ 10 ⇄ 3 ⇄ 5
+
+Insert 20
+
+After:
+
+4 ⇄ 10 ⇄ 3 ⇄ 20 ⇄ 5
+
+Approach
+
+If the list is empty, create a new node and make it the head.
+
+If the list has only one node, insert the new node before it and make the new node the head.
+
+Otherwise, traverse to the tail.
+
+Create the new node.
+
+Connect it between tail->prev and tail.
+
+Update both prev and next pointers.
+
+Edge Cases
+
+Empty list: New node becomes the head.
+
+One node: New node is inserted before the only node and becomes the head.
+
+Multiple nodes: New node is inserted immediately before the tail.
+
+Complexity
+
+Time: O(N)
+
+Auxiliary Space: O(1)
 
 # 🔗 Insert Node at Position in Doubly Linked List
 
