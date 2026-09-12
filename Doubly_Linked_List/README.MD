@@ -1,5 +1,6 @@
 # 🔗 Doubly Linked List: Array Conversion & Delete Head
 #🔗 GFG problem link: https://www.geeksforgeeks.org/problems/create-a-doubly-linked-list-from-a-given-array/1
+
 > Implementation and understanding of two fundamental Doubly Linked List operations in C++.
 
 ---
@@ -225,13 +226,266 @@ No extra data structure is used.
 > **Array → DLL:** Traverse the array and connect every newly created node using `prev` and `next`.
 
 > **Delete Head:** Move `head` to `head->next`, set the new head's `prev` to `NULL`, delete the old head, and return the new head.
+---
+
+**Doubly Linked List (DLL)**
+
+# 🔗 Delete Node in a Doubly Linked List
+
+> A solution and explanation for deleting the **X-th node** from a Doubly Linked List.
+
+## 🔗 Problem Link
+
+**GeeksforGeeks:**
+https://www.geeksforgeeks.org/problems/delete-node-in-doubly-linked-list/1
 
 ---
 
-## 🛠️ Language
+## 📝 Problem Statement
 
-**C++**
+Given the head of a Doubly Linked List and an integer `x`, delete the **x-th node** from the linked list.
 
-## 📚 Data Structure
+The list should remain a valid Doubly Linked List after deletion.
 
-**Doubly Linked List (DLL)**
+---
+
+## 💡 Approach
+
+To delete the `x-th` node:
+
+1. Traverse the list until reaching the `x-th` node.
+2. Handle the special case when the node to delete is the **head**.
+3. Connect the previous node to the next node.
+4. If the next node exists, connect its `prev` pointer to the previous node.
+5. Delete the target node.
+6. Return the updated head.
+
+---
+
+# 🔄 Algorithm
+
+### Step 1: Find the Target Node
+
+Start from `head` and move through the list until reaching the `x-th` node.
+
+### Step 2: Delete the Head
+
+If the target node is the first node:
+
+* Move `head` to the next node.
+* Set the new head's `prev` to `NULL`.
+* Delete the old head.
+* Return the new head.
+
+### Step 3: Delete a Middle/Last Node
+
+For a node having a previous node:
+
+* Set `previous->next = current->next`.
+* If `current->next` exists, set `current->next->prev = current->prev`.
+* Delete the current node.
+
+### Step 4: Return Head
+
+Return the updated head of the Doubly Linked List.
+
+---
+
+# 📌 Example
+
+### Original DLL
+
+```text
+NULL ← 10 ⇄ 20 ⇄ 30 ⇄ 40 ⇄ 50 → NULL
+```
+
+Suppose:
+
+```text
+x = 3
+```
+
+We need to delete `30`.
+
+### After Deletion
+
+```text
+NULL ← 10 ⇄ 20 ⇄ 40 ⇄ 50 → NULL
+```
+
+The links around `30` are updated:
+
+```text
+20.next = 40
+40.prev = 20
+```
+
+---
+
+# ⚠️ Edge Cases
+
+### 1. Empty List
+
+```text
+head = NULL
+```
+
+Nothing can be deleted.
+
+**Result:** `NULL`
+
+---
+
+### 2. Delete Head
+
+If `x = 1`:
+
+```text
+NULL ← 10 ⇄ 20 ⇄ 30 → NULL
+```
+
+After deletion:
+
+```text
+NULL ← 20 ⇄ 30 → NULL
+```
+
+The new head's `prev` must be `NULL`.
+
+---
+
+### 3. Delete Middle Node
+
+```text
+10 ⇄ 20 ⇄ 30 ⇄ 40
+```
+
+Delete `30`:
+
+```text
+10 ⇄ 20 ⇄ 40
+```
+
+Both connections around the deleted node must be updated.
+
+---
+
+### 4. Delete Last Node
+
+```text
+10 ⇄ 20 ⇄ 30
+```
+
+Delete `30`:
+
+```text
+10 ⇄ 20
+```
+
+The new last node's `next` must be `NULL`.
+
+---
+
+### 5. Single Node
+
+```text
+NULL ← 10 → NULL
+```
+
+If this node is deleted:
+
+```text
+NULL
+```
+
+---
+
+### 6. Invalid Position
+
+If `x` is greater than the number of nodes, there is no valid target node.
+
+The list should remain unchanged.
+
+---
+
+# 🧠 Key Pointer Logic
+
+For a node in the middle:
+
+```text
+A ⇄ B ⇄ C
+```
+
+If `B` is deleted:
+
+```text
+A ⇄ C
+```
+
+We need to update **both directions**:
+
+```text
+A.next = C
+C.prev = A
+```
+
+This is the most important concept in DLL deletion.
+
+---
+
+# ⏱️ Complexity Analysis
+
+### Time Complexity
+
+**O(n)**
+
+We may need to traverse up to the `x-th` node.
+
+### Space Complexity
+
+**O(1)**
+
+No extra data structure is used.
+
+---
+
+# 📊 Complexity Summary
+
+| Operation      | Complexity |
+| -------------- | ---------: |
+| Find X-th Node |       O(n) |
+| Delete Node    |       O(1) |
+| Overall Time   |   **O(n)** |
+| Extra Space    |   **O(1)** |
+
+---
+
+# ⭐ Important Interview Points
+
+* In a DLL, every node has both `prev` and `next`.
+* While deleting a node, both neighbouring links must be updated.
+* Deleting the head requires updating the new head's `prev`.
+* Deleting the last node requires making the new last node's `next` `NULL`.
+* If the target node is already known, deletion itself takes **O(1)**.
+* Finding the `x-th` node takes **O(n)**.
+
+---
+
+# 🎯 Core Learning
+
+The main idea of deletion in a Doubly Linked List is:
+
+```text
+Find Target
+     ↓
+Check Head Case
+     ↓
+Connect Previous ↔ Next
+     ↓
+Delete Target
+     ↓
+Return Head
+```
+
+> **Always remember:** When deleting a node from a DLL, carefully update both `prev` and `next` pointers.
+
