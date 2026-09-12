@@ -490,256 +490,76 @@ Return Head
 > **Always remember:** When deleting a node from a DLL, carefully update both `prev` and `next` pointers.
 
 
-# 🔗 Insert a Node at a Given Position in a Doubly Linked List
+# 🔗 Insert Node at Position in Doubly Linked List
 
-> Insert a new node **after the given position `p`** in a Doubly Linked List.
-
----
-
-## 🔗 Problem Link
-
-**GeeksforGeeks:**
-https://www.geeksforgeeks.org/problems/insert-a-node-in-doubly-linked-list/1
+**Platform:** GeeksforGeeks
+**Problem:** [Insert a Node in Doubly Linked List](https://www.geeksforgeeks.org/problems/insert-a-node-in-doubly-linked-list/1)
 
 ---
 
-## 📝 Problem Statement
+## 📝 Problem
 
-Given the head of a Doubly Linked List, an integer `p`, and a value `x`, insert a new node with value `x` **after the `p-th` node**.
+Given a Doubly Linked List, a position `p`, and a value `x`, insert a new node with value `x` **after the `p-th` node**.
 
-The Doubly Linked List must remain properly connected after insertion.
+> `p` is **0-based**.
 
----
-
-## 💡 Understanding the Position
-
-In this problem, `p` represents the **0-based index** of the node after which the new node should be inserted.
-
-### Example
+**Example:**
 
 ```text
-DLL:
 10 ⇄ 20 ⇄ 30 ⇄ 40
 
-p = 1
-x = 25
-```
+p = 1, x = 25
 
-The node at position `1` is `20`.
-
-So, insert `25` after `20`.
-
-### Result
-
-```text
 10 ⇄ 20 ⇄ 25 ⇄ 30 ⇄ 40
 ```
 
 ---
 
-# 🚀 Approach
+## 💡 Approach
 
-The insertion can be performed in the following steps:
+1. Traverse the DLL to reach the `p-th` node.
+2. Create a new node with value `x`.
+3. Connect the new node between `temp` and `temp->next`.
+4. Update both `next` and `prev` pointers.
+5. Return the original `head`.
 
-1. Start from the `head`.
-2. Traverse the list until reaching the node at position `p`.
-3. Create a new node with value `x`.
-4. Store the next node of the current node.
-5. Connect the new node's `prev` to the current node.
-6. Connect the new node's `next` to the next node.
-7. If the next node exists, update its `prev` to the new node.
-8. Update the current node's `next` to the new node.
-9. Return the original `head`.
-
----
-
-# 🔄 Algorithm
-
-### Step 1: Reach Position `p`
-
-Start from `head` and move `p` times using the `next` pointer.
-
-After traversal:
+### Pointer Changes
 
 ```text
-temp → node at position p
+Before:  A ⇄ B
+
+Insert X
+
+After:   A ⇄ X ⇄ B
 ```
 
 ---
 
-### Step 2: Create New Node
+## 🔄 Algorithm
 
-Create a new node containing `x`.
-
-```text
-newNode = x
-```
-
----
-
-### Step 3: Connect New Node with Previous Node
-
-The new node should come after `temp`.
-
-```text
-newNode.prev → temp
-```
+* Move `temp` to position `p`.
+* `newNode->next = temp->next`
+* `newNode->prev = temp`
+* If next node exists, update its `prev`.
+* Update `temp->next = newNode`.
+* Return `head`.
 
 ---
 
-### Step 4: Connect New Node with Next Node
+## ⚠️ Edge Cases
 
-The new node should point to the node that was originally after `temp`.
-
-```text
-newNode.next → temp.next
-```
-
----
-
-### Step 5: Update Next Node
-
-If `temp.next` exists:
-
-```text
-temp.next.prev → newNode
-```
-
-This maintains the backward connection.
+* **Single node:** insertion works normally.
+* **Insert after last node:** `newNode->next = NULL`.
+* **Insert in middle:** update both `prev` and `next`.
+* **Empty list:** depends on the given constraints.
 
 ---
 
-### Step 6: Update Current Node
+## ⏱️ Complexity
 
-Finally:
-
-```text
-temp.next → newNode
-```
-
-The final connection becomes:
-
-```text
-temp ⇄ newNode ⇄ next
-```
+* **Time:** `O(n)` — traversal to position `p`
+* **Space:** `O(1)` — no extra data structure
 
 ---
 
-# 📌 Example
-
-### Before Insertion
-
-```text
-NULL ← 10 ⇄ 20 ⇄ 30 ⇄ 40 → NULL
-              ↑
-             p=1
-```
-
-Insert:
-
-```text
-x = 25
-```
-
-### After Insertion
-
-```text
-NULL ← 10 ⇄ 20 ⇄ 25 ⇄ 30 ⇄ 40 → NULL
-```
-
----
-
-# 🔍 Pointer Changes
-
-Suppose:
-
-```text
-A ⇄ B
-```
-
-We want to insert `X` between them.
-
-Before:
-
-```text
-A ⇄ B
-```
-
-After:
-
-```text
-A ⇄ X ⇄ B
-```
-
-Required pointer updates:
-
-```text
-X.prev = A
-X.next = B
-
-A.next = X
-B.prev = X
-```
-
-> **Important:** In DLL insertion, both forward and backward links must be updated.
-
----
-
-# ⚠️ Edge Cases
-
-### 1. Insert After the Last Node
-
-If `p` points to the last node:
-
-```text
-10 ⇄ 20 ⇄ 30
-```
-
-Insert `40` after `30`:
-
-```text
-10 ⇄ 20 ⇄ 30 ⇄ 40
-```
-
-Here, the new node's `next` is `NULL`.
-
----
-
-### 2. Insert in the Middle
-
-```text
-10 ⇄ 20 ⇄ 30
-```
-
-Insert `25` after `20`:
-
-```text
-10 ⇄ 20 ⇄ 25 ⇄ 30
-```
-
-Both `next` and `prev` links need to be updated.
-
----
-
-### 3. Single Node
-
-```text
-10
-```
-
-Insert after position `0`:
-
-```text
-10 ⇄ 20
-```
-
----
-
-### 4. Empty List
-
-If `head == NULL`, the given problem constraints should be checked before assuming insertion is possible.
-
----
-
-# ⏱️ Complex
 
